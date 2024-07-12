@@ -1,1 +1,0 @@
-Test file for this folder (Git does not include empty directories)
