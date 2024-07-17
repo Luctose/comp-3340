@@ -14,10 +14,10 @@ class demo extends html5hmflayout
 
         parent::__construct(
             pageid::get_title($pageID),
-            array('css/demo.css'),
+            array('css/mainstyle.css'),
             array(),
             new demo_header(),
-            $content, // new demo_midsection(),
+            new demo_midsection($content, array('css/mainstyle.css')),
             new demo_footer()
         );
     }
