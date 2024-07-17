@@ -2,7 +2,7 @@
 $CFG = new stdClass();
 
 # Replace the following URL with your site's URL...
-$CFG->base_url = 'https://comp3340.preney.myweb.cs.uwindsor.ca/';
+$CFG->base_url = 'https://test.sarwehl.myweb.cs.uwindsor.ca/';
 
 # Site-wide password salt...
 $CFG->site_wide_password_salt = 'dhgsa77w';
@@ -20,6 +20,6 @@ $CFG->db_admin_permit_create_drop = FALSE;
 $CFG->db_admin_only_allow_ip = '70.25.8.171';
 
 # e.g., Special email support address...
-$CFG->emailaddr_support = 'preney@uwindsor.ca';
+$CFG->emailaddr_support = 'sarwehl@uwindsor.ca';
 
 ?>
