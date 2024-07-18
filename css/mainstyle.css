@@ -1,6 +1,6 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-image: url('/home/kowalskw/Desktop/COMP3340/groupproject/footerimage.png');
+    background-image: url('../images/footerimage.png');
     background-size: cover;
     background-position: center;
 
