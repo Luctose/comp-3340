@@ -7,7 +7,7 @@ class demo extends html5hmflayout
     public function __construct($pageID, output $content, $css, $js)
     {
         # If the current page is invalid, then redirect to main page...
-        pageid::if_invalid_redirect_to_pageid(pageid::MAIN);
+        #pageid::if_invalid_redirect_to_pageid(pageid::MAIN);
         pageid::set_current_pageid($pageID);
 
         $this->content = $content;
