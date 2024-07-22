@@ -6,13 +6,16 @@ class demo_midsection extends output
     private $js;
     private $content;
     private $menu;
+    private $footer;
     private $has_menu;
+    private $has_footer;
 
     public function __construct(
         output $content = new no_output(),
         $css = array(),
         $js = array(),
-        output $menu = null
+        output $menu = null,
+        output $footer = null
     )
     {
         if (is_array($css))
@@ -31,9 +34,15 @@ class demo_midsection extends output
 
         $this->content = $content;
         $this->menu = $menu;
+        $this->footer = $footer;
+
         $this->has_menu = ($menu !== NULL);
         if ($this->has_menu === false)
             $this->menu = new no_output();
+        
+        $this->has_footer = ($footer !== NULL);
+        if ($this->has_footer === false)
+            $this->footer = new no_output();
     }
 
   protected function do_css_files_required()
@@ -42,6 +51,7 @@ class demo_midsection extends output
       array_unique(
         array_merge(
           $this->menu->css_files_required(),
+          $this->footer->css_files_required(),
           $this->content->css_files_required(),
           $this->css
         )
@@ -55,6 +65,7 @@ class demo_midsection extends output
       array_unique(
         array_merge(
           $this->menu->js_files_required(),
+          $this->footer->js_files_required(),
           $this->content->js_files_required(),
           $this->js
         )
@@ -74,6 +85,13 @@ class demo_midsection extends output
     echo "\n<div id='content'>\n";
     $this->content->generate();
     echo "\n</div>\n";
+
+    if ($this->has_footer)
+    {
+      echo "\n<div id='footer'>\n";
+      $this->footer->generate();
+      echo "\n</div>";
+    }
   }
 }
 
