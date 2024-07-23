@@ -14,11 +14,11 @@ class demo extends html5hmflayout
 
         parent::__construct(
             pageid::get_title($pageID),
-            array_merge($css, array('css/menu.css', 'css/footer.css')),
+            array_merge($css, array('css/menu.css')),
             array_merge($js, array('js/menu.js')),
             new demo_header(),
-            new demo_midsection($content, array_merge($css, array('css/menu.css', 'css/footer.css')), array_merge($js, array('js/menu.js')), new menu(), new footer()),
-            new demo_footer()
+            new demo_midsection($content, array_merge($css, array('css/menu.css')), array_merge($js, array('js/menu.js')), new menu()),
+            new footer()
         );
     }
 }

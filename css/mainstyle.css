@@ -23,16 +23,3 @@ body {
     width: 60%;
     height: auto;
 }
-
-#footer {
-    height: 100px;
-    width: 100%;
-    background: lightskyblue;
-    text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-#footer img{
-    max-height: 100%;
-    max-width: 100%;
-}
