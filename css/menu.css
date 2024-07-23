@@ -1,0 +1,46 @@
+div#menu {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: yellow;
+    margin: 1em;
+    border: 2em double black;
+    border-radius: 1em;
+    padding: 1em;
+    overflow: hidden;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 89.5vw;
+}
+
+.sticky + #content {
+    padding-top: 180px;
+}
+
+div#menutext {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+}
+
+div#name {
+    padding-bottom: 1em;
+}
+
+div#slogan {
+    padding-top: 1em;
+}
+
+div#logo {
+    margin-right: 20%;
+}
+
+div#buttons {
+    margin-left: 20%;
+}
