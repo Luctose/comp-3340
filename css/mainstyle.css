@@ -1,6 +1,6 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-image: url('images/mainimage.png');
+    background-image: url('../images/mainimage.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
