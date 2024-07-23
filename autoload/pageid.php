@@ -34,7 +34,7 @@ final class pageid
     {
         switch ($pageID)
         {
-            case self::MAIN:                return 'Main';
+            case self::MAIN:                return 'Books Books Books';
             case self::PAGE2:               return 'Page 2!!!!';
             default:                        return 'Invalid';
         }

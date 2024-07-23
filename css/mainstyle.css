@@ -1,25 +1,62 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-image: url('../images/footerimage.png');
+    background-image: url('images/mainimage.png');
     background-size: cover;
     background-position: center;
+    height: 100vh;
+    align-items: center;
+}
+
+#title_container {
+    text-align: center;
+    padding-top: 100px;
 
 }
 
-#header {
+h1 {
+    font-weight: bold;
+    color: black;
+}
+
+#sale_container {
+    /*border: 5px solid;*/
+    height: 600px;
+    width: 500px;
+    background-color: DCD6F7;
+    position: relative;
+    left: 100px;
+    text-align: center;
+    font-size: 30px;
+    justify-content: center;
+    padding-top: .2px;
+    border-radius: 30px;
+}
+
+#shop_button {
     height: 100px;
-    width: 100%;
-    background: lightskyblue;
-    text-align: center; 
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /*test to try to make it dynamic*/
+    width: 90%;
+    max-width: 200px;
+    
+    background-color: green;
+    position: relative;
+    left: 800px;
+    top: -400px;
+
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    padding: 15x 32x;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+    
 }
 
-#header img{
-        max-height: 100%;
-        max-width: 100%;
+#shop_button:hover {
+    background-color: red;
 }
 
-#main {
-    width: 60%;
-    height: auto;
-}
+
