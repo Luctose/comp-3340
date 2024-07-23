@@ -16,7 +16,7 @@ class demo extends html5hmflayout
             pageid::get_title($pageID),
             array_merge($css, array('css/menu.css')),
             array_merge($js, array('js/menu.js')),
-            new demo_header(),
+            new header(),
             new demo_midsection($content, array_merge($css, array('css/menu.css')), array_merge($js, array('js/menu.js')), new menu()),
             new footer()
         );

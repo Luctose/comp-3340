@@ -1,5 +1,5 @@
 <div id='logo'>
-    Logo Here
+    <img src="images/logo.png" alt="Logo" width="160" height="90">
 </div>
 <div id='menutext'>
     <div id='name'>
@@ -11,9 +11,15 @@
 </div>
 <div id='buttons'>
     <div id='login'>
-        Login
+        <form action="login.php" method="POST">
+            <fieldset>
+                <input type="text" name="username" value="Username">
+                <input type="password" name="password" value="Password">
+                <input type="submit" name="login" value="Login">
+            </fieldset>
+        </form>
     </div>
     <div id='cart'>
-        Shopping Cart
+        <a href="page2.php">Shopping Cart</a>
     </div>
 </div>
