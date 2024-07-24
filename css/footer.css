@@ -1,3 +1,19 @@
 div#footer {
-    text-decoration: none;
+    background-color: #59B;
+    list-style-type: none;
+}
+
+div#contactlist {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+div ul {
+    list-style-type: none;
+}
+
+li {
+    list-style-type: none;
 }
