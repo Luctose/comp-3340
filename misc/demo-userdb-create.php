@@ -14,6 +14,7 @@ try
 }
 catch (Exception $e)
 {
-  echo "EXCEPTION: ".$e->getMessage();
+  echo "EXCEPTION: ".$e->getMessage()."\n";
+  echo "IP: ".http_utils::get_client_ip_address()."\n";
 }
 ?>

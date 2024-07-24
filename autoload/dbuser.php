@@ -17,14 +17,17 @@ final class dbuser extends db
         // is from this site and safe...
         $sql = <<<ZZEOF
 CREATE TABLE users (
-  user VARCHAR(80) PRIMARY KEY,
-  pass VARCHAR(255) NOT NULL
+  user_id INT PRIMARY KEY AUTO_INCREMENT,
+  user VARCHAR(50) NOT NULL UNIQUE,
+  pass VARCHAR(255) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 ZZEOF;
         return $this->db_handle()->exec($sql);
     }
 
-    public function admin_destroy_all_structures()
+    public function admin_destroy_db()
     {
         if (!$this->admin_permit_create_drop())
             throw new Exception('Database DROPs are prohibited by admin.');
@@ -56,16 +59,17 @@ ZZEOF;
     }
 
     // Inserts a new user $user into the DBUser table having password $pass.
-    public function insert($user, $pass)
+    public function insert($user, $pass, $email)
     {
         // Create the entry to add...
         $entry = array(
           ':user' => $user,
           ':pass' => $this->compute_password_hash($pass),
+          ':email' => $email,
         );
 
         // Create the SQL prepared statement and insert the entry...
-        $sql = 'INSERT INTO users VALUES (:user, :pass)';
+        $sql = 'INSERT INTO users (user, pass, email) VALUES (:user, :pass, :email)';
         $stmt = $this->db_handle()->prepare($sql);
         return $stmt->execute($entry);
     }
