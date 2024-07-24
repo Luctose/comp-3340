@@ -5,7 +5,7 @@ $CFG = new stdClass();
 $CFG->base_url = 'https://test.sarwehl.myweb.cs.uwindsor.ca/';
 
 # Site-wide password salt...
-$CFG->site_wide_password_salt = 'dhgsa77w';
+$CFG->site_wide_password_salt = 'ed53wf4';
 
 # Set a "global"  session timeout...
 $CFG->session_timeout = 60*10; // in seconds
