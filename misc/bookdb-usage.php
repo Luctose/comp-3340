@@ -8,7 +8,7 @@ try
   $db = new dbbook();
 
   echo "Adding some books...\n";
-  $db->insert('To Kill a Mockingbird', 'Harper Lee', 'Fiction', '10.99','1960-07-11','tkam.png');
+  $db->insert('To Kill a Mockingbird', 'Harper Lee', 'Fiction', '10.99','1960-07-11','tkam.jpg');
   $db->insert('1984', 'George Orwell', 'Dystopian', '9.99','1949-06-08', '1984.jpg');
   $db->insert('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', '8.99','1925-04-10', 'the_great_gatsby.jpg');
 
