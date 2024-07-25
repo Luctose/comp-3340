@@ -5,7 +5,14 @@ final class menu extends output
   public function generate_body()
   {
       global $CFG;
-      readfile($CFG->base_url.'templates'.DIRECTORY_SEPARATOR.'menu.html');
+
+      if (loginout::is_logged_in())
+      {
+        readfile($CFG->base_url.'templates'.DIRECTORY_SEPARATOR.'menu2.html');
+      }else
+      {
+        readfile($CFG->base_url.'templates'.DIRECTORY_SEPARATOR.'menu.html');
+      }
   }
 }
 
