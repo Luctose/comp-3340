@@ -4,7 +4,7 @@ final class pageid
 {
     public const INVALID = 0;
     public const MAIN = 1;
-    public const PAGE2 = 2;
+    public const CART = 2;
     public const CONTACT = 3;
     public const CATALOGUE = 4;
 
@@ -14,7 +14,7 @@ final class pageid
         {
             default:                        return FALSE;
             case self::MAIN:                return TRUE;
-            case self::PAGE2:               return TRUE;
+            case self::CART:               return TRUE;
             case self::CONTACT:             return TRUE;
             case self::CATALOGUE:           return TRUE;
             
@@ -30,7 +30,7 @@ final class pageid
         {
             default:                        return $prefix;
             case self::MAIN:                return $prefix;
-            case self::PAGE2:               return $prefix.'/page2.php';
+            case self::CART:               return $prefix.'/cart.php';
             case self::CONTACT:             return $prefix.'/contact.php';
             case self::CATALOGUE:           return $prefix.'/catalogue.php';
         }
@@ -41,7 +41,7 @@ final class pageid
         switch ($pageID)
         {
             case self::MAIN:                return 'Books Books Books';
-            case self::PAGE2:               return 'Page 2!!!!';
+            case self::CART:               return 'Shopping Cart';
             case self::CONTACT:             return 'Contact Page';
             case self::CATALOGUE:           return 'Book Catalogue';
             default:                        return 'Invalid';
