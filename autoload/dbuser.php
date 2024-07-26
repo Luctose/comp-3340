@@ -13,15 +13,15 @@ final class dbuser extends db
         if (!$this->admin_permit_create_drop())
             throw new Exception('Database CREATEs are prohibited by admin.');
 
-        // An SQL prepared statement is not needed here since everything
-        // is from this site and safe...
+        // The users have IDs, user,pass,email,creation time and role.
         $sql = <<<ZZEOF
 CREATE TABLE users (
   user_id INT PRIMARY KEY AUTO_INCREMENT,
   user VARCHAR(50) NOT NULL UNIQUE,
   pass VARCHAR(255) NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  role ENUM('admin', 'user') DEFAULT 'user'
 )
 ZZEOF;
         return $this->db_handle()->exec($sql);
@@ -70,6 +70,27 @@ ZZEOF;
 
         // Create the SQL prepared statement and insert the entry...
         $sql = 'INSERT INTO users (user, pass, email) VALUES (:user, :pass, :email)';
+        $stmt = $this->db_handle()->prepare($sql);
+        return $stmt->execute($entry);
+    }
+
+    // We don't want to repeat in the include user's role to 'user' knowing that there are only so many admins
+    public function updateRole($user_id, $role)
+    {
+        // Validate the new role
+        $validRoles = array('admin', 'user');
+        if (!in_array($role, $validRoles)) {
+            throw new InvalidArgumentException("Invalid role specified.");
+        }
+
+        // Create the entry to add...
+        $entry = array(
+            ':role' => $role,
+            ':user_id' => $user_id,
+        );
+
+        // Prepare the SQL statement
+        $sql = 'UPDATE users SET role = :role WHERE user_id = :user_id';
         $stmt = $this->db_handle()->prepare($sql);
         return $stmt->execute($entry);
     }

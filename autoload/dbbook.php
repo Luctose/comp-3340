@@ -13,16 +13,13 @@ final class dbbook extends db
         if (!$this->admin_permit_create_drop())
             throw new Exception('Database CREATEs are prohibited by admin.');
 
-        // An SQL prepared statement is not needed here since everything
-        // is from this site and safe...
+        // The book catalogue has the minimum information
         $sql = <<<ZZEOF
 CREATE TABLE books (
     book_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(255) NOT NULL,
-    genre VARCHAR(100) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    published_date DATE,
     image VARCHAR(255) NOT NULL
 )
 ZZEOF;
@@ -39,20 +36,18 @@ ZZEOF;
     }
 
     // Inserts a new user $user into the DBUser table having password $pass.
-    public function insert($title, $author, $genre, $price, $published_date, $image)
+    public function insert($title, $author, $price, $image)
     {
         // Create the entry to add...
         $entry = array(
           ':title' => $title,
           ':author' => $author,
           ':price' => $price,
-          ':genre' => $genre,
-          ':published_date' => $published_date,
           ':image' => $image,
         );
 
         // Create the SQL prepared statement and insert the entry...
-        $sql = 'INSERT INTO books (title, author, price, genre, published_date, image) VALUES (:title, :author, :price, :genre, :published_date, :image)';
+        $sql = 'INSERT INTO books (title, author, price, image) VALUES (:title, :author, :price, :image)';
         $stmt = $this->db_handle()->prepare($sql);
         return $stmt->execute($entry);
     }

@@ -23,7 +23,9 @@ try
   echo "\nLookup All...\n";
   print_r($db->lookup_all());
 
-  echo "Lookup...\n";
+  echo "\nChange john's role to admin...\n";
+  $db->updateRole('1','admin');
+
   print_r($db->lookup('john'));
 
   //echo "3. Erasing john...\n";
