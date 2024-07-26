@@ -20,9 +20,11 @@ h1 {
 
 #sale_container {
     /*border: 5px solid;*/
+    display: flex;
+    flex-wrap: wrap;
     height: 600px;
     width: 500px;
-    background-color: DCD6F7;
+    background-color: #DCD6F7;
     position: relative;
     left: 100px;
     text-align: center;
@@ -33,25 +35,26 @@ h1 {
 }
 
 #shop_button {
-    height: 100px;
-    /*test to try to make it dynamic*/
-    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 70%;
     max-width: 200px;
     
     background-color: green;
-    position: relative;
-    left: 800px;
-    top: -400px;
 
     color: white;
     text-align: center;
     display: inline-block;
     font-size: 30px;
-    padding: 15x 32x;
+    padding: 15px 32px;
 
     border-radius: 30px;
 
     cursor: pointer;
+    
     
 }
 
