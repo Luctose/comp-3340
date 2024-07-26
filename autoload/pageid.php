@@ -5,6 +5,7 @@ final class pageid
     public const INVALID = 0;
     public const MAIN = 1;
     public const PAGE2 = 2;
+    public const CONTACT = 3;
 
     public static function is_valid($pageID)
     {
@@ -13,6 +14,8 @@ final class pageid
             default:                        return FALSE;
             case self::MAIN:                return TRUE;
             case self::PAGE2:               return TRUE;
+            case self::CONTACT:               return TRUE;
+            
         }
     }
 
@@ -26,6 +29,8 @@ final class pageid
             default:                        return $prefix;
             case self::MAIN:                return $prefix;
             case self::PAGE2:               return $prefix.'/page2.php';
+            case self::CONTACT:             return $prefix.'/contact.php';
+            
             // e.g., case self::OTHER:      return $prefix.'other.php';
         }
     }
@@ -36,6 +41,7 @@ final class pageid
         {
             case self::MAIN:                return 'Books Books Books';
             case self::PAGE2:               return 'Page 2!!!!';
+            case self::CONTACT:             return 'Contact Page';
             default:                        return 'Invalid';
         }
     }
