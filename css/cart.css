@@ -1,0 +1,20 @@
+.cart-item {
+    margin-bottom: 20px;
+}
+.cart-item img {
+    max-width: 100px;
+    display: block;
+}
+.item-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+.quantity-controls button {
+    margin: 0 5px;
+    padding: 5px 10px;
+}

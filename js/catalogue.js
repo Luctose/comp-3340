@@ -13,5 +13,4 @@ function addToCart(name, author, price) {
         cart.push({name, author, price, quantity: 1});
     }
     localStorage.setItem('cart', JSON.stringify(cart));
-    window.location.href = 'cart.html';
 }

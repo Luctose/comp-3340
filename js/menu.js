@@ -5,6 +5,20 @@ function init(){
     var navbar = document.getElementById("menu");
     window.onscroll = function() {myFunction(navbar.offsetTop, navbar)};
 
+    // AJAX to get change cart button to homepage button if on cart page already
+    if (location.href.replace(/(.+\w\/)(.+)/,"/$2") == '/cart.php')
+    {
+        var cartbutton = document.getElementById('cart');
+        var req = new XMLHttpRequest();
+        req.onload =
+        function()
+        {
+            cartbutton.innerHTML = this.responseText;
+        }
+        req.open("GET", "../ajaxphp/switchButton.php", true);
+        req.send();
+    }
+
     // When on the logged in version of menu uses AJAX to get the username to display to user
     var text = document.getElementById('userin');
     if (text !== null){
@@ -15,7 +29,7 @@ function init(){
             text.innerHTML = this.responseText;
         }
     ;
-    req.open("GET", "../loginphp/getName.php", true);
+    req.open("GET", "../ajaxphp/getName.php", true);
     req.send();
     }
 }
