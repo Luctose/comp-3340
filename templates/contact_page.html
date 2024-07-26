@@ -1,3 +1,42 @@
-<div id = "test_container"> 
-    <h1>Contact Form</h1>
+<title>TinyMCE Demo</title>
+<script src="tinymce/tinymce.min.js" type="application/javascript"></script>
+<script type="application/javascript">
+tinymce.init({
+selector: 'textarea#default-editor'
+});
+</script>
+
+<h1>Contact Form:</h1>
+
+<div class="form_container">
+
+    <div class="form_group">
+        <label for="first_name">First name:</label>
+        <input type="text" id="first_name">
+    </div>
+
+    <div class="form_group">
+        <label for="last_name">Last name:</label>
+        <input type="text" id="last_name">
+    </div>
+
+    <div class="form_group">
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number">
+    </div>
+
+    <div class="form_group">
+        <label for="email_contact">Email:</label>
+        <input type="text" id="email_contact">
+    </div>
+
 </div>
+
+
+
+<form action="demo5-submit.php" method="POST">
+Enter text below: 
+<textarea id="default-editor" name="sometext" rows="4" cols="25">Enter your message here.</textarea>
+<br>
+<input type="submit" name="submit" value="Submit">
+</form>
