@@ -2,35 +2,66 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-between;
+    padding: 10px; /* padding around grid container*/
+    box-sizing: border-box; /* this will include padding and border in element total width/height */
+    justify-content: center;
 }
-.book-item {
-    width: 23%;
-    cursor: pointer; /* Change cursor to pointer on hover */
+
+.book {
+    width:245px;
+    max-width: 300px; /* pptionally limit max width */
+    height: 450px; /* set a fixed height for each item */
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 15px;
     box-sizing: border-box;
     text-align: center;
+    background-color: #f9f9f9; /* background color */
 }
-.book-item img {
-    max-width: 100%;
-    height: 200px; /* Set a fixed height */
-    object-fit: cover; /* Maintain aspect ratio and cover the area */
+
+.add-to-cart {
+    cursor: pointer; /* change cursor to pointer on hover */
+    margin: 0 5px;
+    padding: 5px 10px;
+
+    font-size: 14px;
+    cursor: pointer;
 }
-.book-details {
-    margin-top: 10px;
+
+.book h3{
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 3px;
+    overflow: hidden; /* hide overflow text */
+    text-overflow: ellipsis; /* display ellipsis (...) for overflow text */
+    white-space: nowrap; /* prevent wrapping */
 }
-.book-details .price {
+
+.book .author{
+    margin:0;
+}
+
+.book img {
+    width: auto; /* image takes up 100% of the container width */
+    height: 100%;
+    max-height: 270px; /* maximum height for the image */
+    object-fit: cover; /* cover the area */
+}
+
+.book .price {
     color: green;
     font-weight: bold;
 }
+
+/*
 .important-notice {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #ff0000; /* Red background */
-    color: #ffffff; /* White text */
+    background-color: #ff0000; 
+    color: #ffffff; 
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
 }
+*/
+

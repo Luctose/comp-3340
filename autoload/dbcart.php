@@ -113,10 +113,10 @@ ZZEOF;
             $stmt = $this->db_handle()->prepare($sql);
             $stmt->execute($entry);
             $result = $stmt->fetchAll();
-            if (count($result) != 1)
+            if (count($result) < 1)
                 return FALSE;
             else
-                return $result[0];
+                return $result;
         }
         catch (PDOException $e)
         {
@@ -133,6 +133,38 @@ ZZEOF;
         $stmt = $this->db_handle()->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    public function updateQty($user_id, $book_id, $quantity)
+    {
+        if(loginout::is_logged_in()){
+            if($quantity == 0){
+                $this->eraseRow($user_id, $book_id);
+            } else {
+                $entry = array(
+                    ':user_id' => $user_id,
+                    ':book_id' => $book_id,
+                    ':quantity' => $quantity,
+                );
+                //hreate the SQL prepared statement and delete the entry...
+                $sql = 'UPDATE cart SET quantity = :quantity WHERE user_id = :user_id AND book_id = :book_id';
+                $stmt = $this->db_handle()->prepare($sql);
+                try {
+                    //execute the statement
+                    $stmt->execute($entry);
+                    //check if the update was successful. 
+                    //$stmt->rowCount() returns the number of rows affected by the last SQL statement executed
+                    if ($stmt->rowCount() == 0) {
+                        // Handle the case where no rows were updated (e.g., item not found)
+                        $this->insert($user_id, $book_id, $quantity);
+                    }
+                } catch (PDOException $e) {
+                    //handle database errors
+                    throw new Exception('Database error: ' . $e->getMessage());
+                }
+            }
+        }
+        
     }
 }
 

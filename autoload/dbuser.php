@@ -173,6 +173,33 @@ ZZEOF;
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    // Returns the user ID
+    public function getUserId($user)
+    {
+        // Create the entry to add...
+        $entry = array( ':user' => $user );
+
+        // Create the SQL prepared statement and insert the entry...
+        try
+        {
+            $sql = 'SELECT user_id FROM users WHERE user = :user';
+            $stmt = $this->db_handle()->prepare($sql);
+            $stmt->execute($entry);
+
+            $result = $stmt->fetchAll();
+            if (count($result) === 1)
+            {
+                return $result[0]['user_id'];
+            }
+            else
+                return FALSE;
+        }
+        catch (PDOException $e)
+        {
+            return FALSE;
+        }
+    }
 }
 
 ?>

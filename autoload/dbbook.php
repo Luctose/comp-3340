@@ -38,18 +38,23 @@ ZZEOF;
     // Inserts a new user $user into the DBUser table having password $pass.
     public function insert($title, $author, $price, $image)
     {
-        // Create the entry to add...
-        $entry = array(
-          ':title' => $title,
-          ':author' => $author,
-          ':price' => $price,
-          ':image' => $image,
-        );
+        if($this->bookExists($title, $author)){
+            echo "Error: The book $title by $author already exists.\n";
+        } else {
+            // Create the entry to add...
+            $entry = array(
+            ':title' => $title,
+            ':author' => $author,
+            ':price' => $price,
+            ':image' => $image,
+            );
 
-        // Create the SQL prepared statement and insert the entry...
-        $sql = 'INSERT INTO books (title, author, price, image) VALUES (:title, :author, :price, :image)';
-        $stmt = $this->db_handle()->prepare($sql);
-        return $stmt->execute($entry);
+            // Create the SQL prepared statement and insert the entry...
+            $sql = 'INSERT INTO books (title, author, price, image) VALUES (:title, :author, :price, :image)';
+            $stmt = $this->db_handle()->prepare($sql);
+            return $stmt->execute($entry);
+        }
+        
     }
 
     // Erases an existing user $user from the DBUser table.
@@ -103,6 +108,42 @@ ZZEOF;
         $stmt->execute();
         return $stmt->fetchAll();
     }
-}
+    // get by id
+    public function getById($book_id)
+    {
+        // Create the entry to add...
+        $entry = array( ':book_id' => $book_id );
 
+        // Create the SQL prepared statement and insert the entry...
+        try
+        {
+            $sql = 'SELECT * FROM books WHERE book_id = :book_id';
+            $stmt = $this->db_handle()->prepare($sql);
+            $stmt->execute($entry);
+            $result = $stmt->fetchAll();
+            if (count($result) != 1)
+                return FALSE;
+            else
+                return $result[0];
+        }
+        catch (PDOException $e)
+        {
+            return FALSE;
+        }
+    }
+
+    public function bookExists($title, $author)
+    {
+    // prepare the SQL statement to check if the book exists
+    $sql = 'SELECT COUNT(*) FROM books WHERE title = :title AND author = :author';
+    $stmt = $this->db_handle()->prepare($sql);
+    $stmt->execute(array(':title' => $title, ':author' => $author));
+    
+    // fetch the count of matching rows
+    $count = $stmt->fetchColumn();
+    
+    //return true if the book exists, false otherwise
+    return $count > 0;
+    }
+}
 ?>

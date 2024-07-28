@@ -11,6 +11,8 @@ class loginout
             {
                 $_SESSION['is_logged_in'] = TRUE;
                 $_SESSION['who_is_logged_in'] = $uname;
+                $_SESSION['user_id'] = ($db->getUserId($uname));
+
                 return TRUE;
             }
             else
