@@ -3,7 +3,7 @@
 define('SITE_DEBUG', 0);
 
 # Automatically load config.php.
-require_once('config.php');
+require_once('private/config.php');
 
 # Ensure that session_start() is always called...
 ini_set('session.gc_maxlifetime', $CFG->session_timeout);
